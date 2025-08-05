@@ -1,0 +1,64 @@
+---
+layout: default
+title: "Stars Reach - GUNC Lore"
+---
+<body>
+  <!-- Header -->
+  <header>
+    <h1>GUNC Lore</h1>
+    <p>Stars Reach MMORPG - GUNC Lore</p>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="{{ '/' | relative_url }}">GUNC Lore</a>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Main Content Listing the Posts -->
+    <div class="main-content">
+      {% for post in site.posts %}
+      <div class="article">
+        <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+        {% if post.image %}
+          <img src="{{ post.image }}" alt="{{ post.title }}">
+        {% endif %}
+        <p>{{ post.excerpt }}</p>
+        <a href="{{ post.url | relative_url }}">Read more...</a>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Sidebar with Featured Video and Photo Gallery -->
+    <aside class="sidebar">
+      <h3>Featured Video</h3>
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/13_aCZ0s-E4?si=kUgd9AW2I3UiuWbC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="video-container">
+         <iframe width="560" height="315" src="https://www.youtube.com/embed/ryZqFhj_Quc?si=jm9J1Z7BRyY4Vjay" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+<!-- Pagination Controls -->
+  <div class="pagination">
+    {% if paginator.previous_page %}
+      <a class="previous" href="{{ paginator.previous_page_path | relative_url }}">&laquo; Previous</a>
+    {% else %}
+      <span class="disabled">&laquo; Previous</span>
+    {% endif %}
+
+    {% for page in (1..paginator.total_pages) %}
+      {% if page == paginator.page %}
+        <span class="current">{{ page }}</span>
+      {% else %}
+        <a href="{{ paginator.paginate_path | relative_url | replace:'PAGE', page }}">{{ page }}</a>
+      {% endif %}
+    {% endfor %}
+
+    {% if paginator.next_page %}
+      <a class="next" href="{{ paginator.next_page_path | relative_url }}">Next &raquo;</a>
+    {% else %}
+      <span class="disabled">Next &raquo;</span>
+    {% endif %}
+  </div>
+</body>

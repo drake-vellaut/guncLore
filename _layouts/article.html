@@ -1,0 +1,734 @@
+<!-- File: _layouts/article.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:title" content="{{ page.title | default: site.title }}"/>
+  
+  <!-- Custom per-post meta tags -->
+  {% if page.description %}
+    <meta name="twitter:description" content="{{ page.description }}"/>
+  {% endif %}
+  
+  <!-- Open Graph / Twitter Card examples -->
+  {% if page.og_image %}
+    <meta property="og:image" content="{{ page.og_image | absolute_url }}"/>
+    <meta name="twitter:image" content="{{ page.og_image | absolute_url }}"/>
+  {% endif %}
+  {% if page.twitter_card %}
+    <meta name="twitter:card" content="{{ page.twitter_card }}"/>
+  {% endif %}
+ <meta name="twitter:site" content="@GUNC_StarsReach"/>
+
+
+  
+  <!-- Add more as needed, e.g., for title or other properties -->
+  <meta property="og:title" content="{{ page.title | default: site.title }}"/>
+  <meta property="og:description" content="{{ page.description | default: site.description }}"/>
+  <meta name="og:title" content="{{ page.title | default: site.title }}"/>
+  <title>{{ page.title }} | Galactic Geographic</title>
+  
+  <!-- Google Fonts for the futuristic look -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Base Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      color: #e0e0e0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+a {
+  color: #66f0e6;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #e080e8;
+}
+	
+/* Header */
+header {
+  text-align: center;
+  padding: 20px 0;
+  margin-bottom: 30px;
+}
+header h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.8em;
+  color: #66f0e6;
+  text-shadow: 0px 0px 8px rgba(0, 255, 255, 0.7);
+}
+
+header h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.2em;
+  color: #66f0e6;
+  text-shadow: 0px 0px 8px rgba(0, 255, 255, 0.7);
+}
+
+header p {
+  font-size: 1.1em;
+  margin-top: 10px;
+  color: #b0b0b0;
+}
+    
+    /* Navigation Menu (shared by index and article pages) */
+    nav {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #66f0e6;
+      text-decoration: none;
+      font-size: 1.1em;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #e080e8;
+    }
+    
+    /* Container for the Article */
+    .article-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+.haiku-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+    justify-content: center;
+  }
+
+  .haiku-row blockquote {
+    flex: 0 1 calc(50% - 20px);
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 4px solid #66f0e6;
+    padding: 15px 20px;
+    font-style: italic;
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+    border-radius: 6px;
+    color: #e0e0e0;
+    transition: transform 0.2s ease;
+  }
+
+  .haiku-row blockquote:hover {
+    transform: scale(1.02);
+  }
+
+  .haiku-row p {
+    margin: 0 0 8px;
+  }
+
+  .credit {
+    margin-top: 0.8em;
+    font-weight: bold;
+    font-style: normal;
+    color: #88ddee;
+    font-size: 0.95em;
+  }
+
+.toc ul li a.active {
+  color: #e080e8;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(255, 0, 255, 0.6);
+}
+    
+    /* Article Header */
+    .article-header {
+      text-align: center;
+      border-bottom: 2px solid rgba(102,240,230,0.2);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    .article-header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.8em;
+      margin-bottom: 10px;
+      color: #66f0e6;
+      text-shadow: 0px 0px 8px rgba(0, 255, 255, 0.7);
+    }
+    .subheader {
+      color: #b0b0b0;
+      font-size: 1em;
+    }
+    
+    /* Layout for Table of Contents and Main Content */
+    .content-wrapper {
+      display: flex;
+      gap: 30px;
+	align-items: flex-start;
+    }
+    
+    /* Table of Contents Sidebar */
+    .toc {
+      position: sticky;
+  top: 20px;
+  align-self: start; /* ensure it respects flex container sizing */
+  max-height: 95vh; /* limits height to 80% of the viewport */
+  overflow-y: auto; /* enables vertical scrollbar if content overflows */
+  padding-right: 10px; /* prevents scrollbar from overlapping text */
+  width: 25%;
+  max-width: 25%;
+    }
+    .toc h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2em;
+      margin-bottom: 15px;
+      color: #66f0e6;
+    }
+
+.toc h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.0em;
+      margin-bottom: 15px;
+      color: #66f0e6;
+    }
+
+    .toc ul {
+      list-style: none;
+	display: block;
+
+    }
+    .toc ul li {
+      margin-bottom: 10px;
+    }
+    .toc ul li a {
+      text-decoration: none;
+      color: #66f0e6;
+      transition: color 0.3s;
+    }
+    .toc ul li a:hover {
+      color: #e080e8;
+    }
+    
+    /* Main Article Content */
+    .article-content {
+      flex: 3;
+      padding-left: 20px;
+    }
+
+.photo-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.photo-grid-4 img {
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid rgba(102,240,230,0.3);
+  box-shadow: 0 0 8px rgba(102,240,230,0.4);
+}
+
+.article-content section ul {
+ margin-left: 25px;
+}
+    .article-content section {
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(102,240,230,0.1);
+    }
+    .article-content section h2 {
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 15px;
+      color: #66f0e6;
+    }
+.article-content section h3,
+.article-content section h4 {
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 15px;
+      color: #66f0e6;
+    }
+.article-content section h2 h3 h4 {
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 15px;
+      color: #66f0e6;
+    }
+    .article-content section p {
+      margin-bottom: 15px;
+      font-size: 1.1em;
+    }
+    .article-content section img {
+      width: 100%;
+      display: block;
+      margin: 20px 0;
+      border-radius: 4px;
+  border: 1px solid rgba(102,240,230,0.3);
+  box-shadow: 0 0 8px rgba(102,240,230,0.4);
+    }
+    
+    /* Responsive Video Container */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+      overflow: hidden;
+      margin: 20px 0;
+      border: 1px solid rgba(102,240,230,0.3);
+      border-radius: 4px;
+      box-shadow: 0px 0px 10px rgba(102,240,230,0.7);
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    
+    /* Article Footer */
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      border-top: 1px solid rgba(102,240,230,0.1);
+      color: #b0b0b0;
+      font-size: 0.9em;
+      margin-top: 20px;
+    }
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  padding-top: 60px;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80vh;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px; right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#modalCaption {
+  text-align: center;
+  color: #ccc;
+  padding: 10px;
+}
+
+
+.toc-toggle {
+  display: none;
+  background: none;
+  border: 1px solid #66f0e6;
+  color: #66f0e6;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1em;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+  html, body {
+    touch-action: manipulation; /* Prevent double-tap zoom */
+  }
+
+  .content-wrapper {
+    display: block; /* Avoid flex recalculations */
+    min-height: auto;
+    overflow: visible;
+  }
+
+  .haiku-row blockquote {
+    flex: 1 1 100%;
+  }
+
+  .modal-content {
+    max-width: 95%;
+    max-height: 70vh;
+  }
+
+  .modal-close {
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+  }
+
+  #modalCaption {
+    font-size: 0.9rem;
+  }
+
+  .article-content {
+    width: 100%;
+    padding-left: 0;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    overflow: visible;
+    contain: layout; /* Isolate layout recalculations */
+  }
+
+  .article-content section {
+    max-width: 100%;
+  }
+
+  .article-content img,
+  .article-content iframe,
+  .article-content video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    border: 1px solid rgba(102, 240, 230, 0.2);
+    box-shadow: none; /* Remove GPU-heavy effects */
+  }
+
+  .toc {
+  position: sticky; /* disables sticky */
+  Top: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.85);
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  width: 100%;
+  max-width: 100%;
+  max-height: 80vh;
+  overflow-y: auto; /* enables scroll */
+  overflow-x: hidden;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+  
+
+  .toc h3 {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+  }
+
+  .toc h4 {
+    font-size: 0.9em;
+    margin-bottom: 10px;
+  }
+
+  .toc ul li {
+    margin-bottom: 8px;
+  }
+
+  .toc ul ul {
+    margin-left: 10px;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    padding-left: 10px;
+  }
+
+  .article-content section h2,
+  .article-content section h3,
+  .article-content section h4 {
+    scroll-margin-top: 125px;
+  }
+
+  .article-header h1,
+  header h1 {
+    font-size: 2em;
+  }
+
+  .article-header h2,
+  header h2 {
+    font-size: 1.6em;
+  }
+
+  .toc-toggle {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .toc ul {
+    display: none;
+  }
+
+  .toc.open ul {
+    display: block;
+  }
+}
+
+  </style>
+</head>
+<body>
+<header>
+    <h1>Galactic Geographic</h1>
+    <p>Stars Reach MMORPG - Exploring planets, science, nature and the wonders of The Garden</p>
+  </header>
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="/">Galactic Geographic</a>
+  </nav>
+  
+  <div class="article-container">
+    <!-- Article Header -->
+    <header class="article-header">
+      <h1>{{ page.title }}</h1>
+      <p class="subheader">Galactic Geographic · {{ page.date | date: "%B %Y" }} · Curated By {{ page.author }}</p>
+    </header>
+    
+    <div class="content-wrapper">
+      <!-- Table of Contents Sidebar -->
+      <aside class="toc">
+        <h3>Contents</h3>
+	<button class="toc-toggle" onclick="toggleTOC()">☰ Table of Contents</button>
+        <!-- Empty UL (will be populated by JavaScript) -->
+        <ul></ul>
+      </aside>
+      
+      <!-- Main Article Content -->
+      <main class="article-content">
+        {{ content }}
+      </main>
+    </div>
+    <!-- Modal Structure -->
+<div id="imageModal" class="modal" onclick="closeModal()">
+  <span class="modal-close">&times;</span>
+  <img class="modal-content" id="modalImage">
+  <div id="modalCaption"></div>
+</div>
+    <!-- Article Footer -->
+<footer style="text-align: center; font-size: 0.9rem; color: #888; margin-top: 3rem;">
+  <p>
+    <a href="/privacy.html">Privacy Policy</a> &nbsp;|&nbsp;
+    &copy; 2025 Galactic Geographic. All rights reserved.
+  </p>
+<p>Exploring the mysteries of the cosmos with dedication and passion.</p>
+</footer>
+    
+  </div>
+  <script>
+  function toggleTOC() {
+    document.querySelector('.toc').classList.toggle('open');
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const tocContainer = document.querySelector(".toc ul");
+    if (!tocContainer) return;
+
+    tocContainer.innerHTML = "";
+
+    const contentSections = document.querySelectorAll(".article-content section");
+    const usedIds = new Set();
+    const idCounts = {};
+    let currentH2Li = null;
+
+    contentSections.forEach(section => {
+      const headers = section.querySelectorAll("h2, h3");
+
+      headers.forEach((header, index) => {
+        let baseId = header.textContent.trim().toLowerCase().replace(/[^\w]+/g, '-') || 'section-' + index;
+
+        // Ensure unique ID
+        if (idCounts[baseId]) {
+          idCounts[baseId]++;
+          baseId += '-' + idCounts[baseId];
+        } else {
+          idCounts[baseId] = 1;
+        }
+
+        header.id = baseId;
+
+        if (usedIds.has(baseId)) return;
+        usedIds.add(baseId);
+
+        const li = document.createElement("li");
+        const anchor = document.createElement("a");
+        anchor.href = "#" + baseId;
+        anchor.textContent = header.tagName.toLowerCase() === "h3" ? "– " + header.textContent : header.textContent;
+
+        // Collapse TOC on mobile after clicking a link
+        anchor.addEventListener("click", function () {
+          const toc = document.querySelector(".toc");
+          if (window.innerWidth <= 768 && toc.classList.contains("open")) {
+            toc.classList.remove("open");
+          }
+        });
+
+        li.appendChild(anchor);
+
+        if (header.tagName.toLowerCase() === "h2") {
+          tocContainer.appendChild(li);
+          currentH2Li = li;
+        } else if (header.tagName.toLowerCase() === "h3" && currentH2Li) {
+          let subList = currentH2Li.querySelector("ul");
+          if (!subList) {
+            subList = document.createElement("ul");
+            subList.style.marginLeft = "15px";
+            currentH2Li.appendChild(subList);
+          }
+          subList.appendChild(li);
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  document.querySelectorAll('img').forEach(img => {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', function () {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      const caption = document.getElementById('modalCaption');
+      modal.style.display = 'block';
+      modalImg.src = this.src;
+      // Find the figcaption within the same figure
+      const fig = this.closest('figure');
+      const figcaption = fig ? fig.querySelector('figcaption') : null;
+      caption.innerHTML = figcaption ? figcaption.innerHTML : '';
+    });
+  });
+
+  function closeModal() {
+    document.getElementById('imageModal').style.display = 'none';
+  }
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const tocContainer = document.querySelector(".toc ul");
+    if (!tocContainer) return;
+
+    tocContainer.innerHTML = "";
+
+    const contentSections = document.querySelectorAll(".article-content section");
+    const usedIds = new Set();
+    const idCounts = {};
+    let currentH2Li = null;
+    let currentH3Li = null;
+
+    contentSections.forEach(section => {
+      const headers = section.querySelectorAll("h2, h3, h4");
+
+      headers.forEach((header, index) => {
+        let baseId = header.textContent.trim().toLowerCase().replace(/[^\w]+/g, '-') || 'section-' + index;
+
+        if (idCounts[baseId]) {
+          idCounts[baseId]++;
+          baseId += '-' + idCounts[baseId];
+        } else {
+          idCounts[baseId] = 1;
+        }
+
+        header.id = baseId;
+        if (usedIds.has(baseId)) return;
+        usedIds.add(baseId);
+
+        const li = document.createElement("li");
+        const anchor = document.createElement("a");
+
+        if (header.tagName.toLowerCase() === "h3") {
+          anchor.textContent = "– " + header.textContent;
+        } else if (header.tagName.toLowerCase() === "h4") {
+          anchor.textContent = "–– " + header.textContent;
+        } else {
+          anchor.textContent = header.textContent;
+        }
+
+        anchor.href = "#" + baseId;
+
+        anchor.addEventListener("click", function () {
+          const toc = document.querySelector(".toc");
+          if (window.innerWidth <= 768 && toc.classList.contains("open")) {
+            toc.classList.remove("open");
+          }
+        });
+
+        li.appendChild(anchor);
+
+        if (header.tagName.toLowerCase() === "h2") {
+          tocContainer.appendChild(li);
+          currentH2Li = li;
+        } else if (header.tagName.toLowerCase() === "h3" && currentH2Li) {
+          let subList = currentH2Li.querySelector("ul");
+          if (!subList) {
+            subList = document.createElement("ul");
+            subList.style.marginLeft = "15px";
+            currentH2Li.appendChild(subList);
+          }
+          subList.appendChild(li);
+          currentH3Li = li;
+        } else if (header.tagName.toLowerCase() === "h4" && currentH3Li) {
+          let subSubList = currentH3Li.querySelector("ul");
+          if (!subSubList) {
+            subSubList = document.createElement("ul");
+            subSubList.style.marginLeft = "15px";
+            currentH3Li.appendChild(subSubList);
+          }
+          subSubList.appendChild(li);
+        }
+      });
+    });
+
+    // ScrollSpy behavior
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px 0px -60% 0px",
+      threshold: 0
+    };
+
+    const tocLinks = document.querySelectorAll(".toc a");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          tocLinks.forEach(link => {
+            link.classList.toggle("active", link.getAttribute("href") === "#" + id);
+            if (link.classList.contains("active")) {
+              link.scrollIntoView({ block: "nearest", behavior: "smooth" });
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    // Observe all h2, h3, and h4 headers
+    document.querySelectorAll(".article-content section h2, .article-content section h3, .article-content section h4").forEach(header => {
+      observer.observe(header);
+    });
+  });
+</script>
+
+
+
+
+
+
+<script data-goatcounter="https://gunc.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

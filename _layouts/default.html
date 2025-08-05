@@ -1,0 +1,28 @@
+<!-- File: _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ site.title }}</title>
+  
+  <!-- Google Fonts for futuristic styling -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Link to the external futuristic CSS -->
+  <link rel="stylesheet" href="{{ '/assets/css/futuristic.css' | relative_url }}">
+</head>
+<img src="https://galacticgeographic.gunc.org/galacticgeographicMain.png" width="1" height="1" style="display:none;" alt="">
+
+<body>
+  {{ content }}
+</body>
+<script data-goatcounter="https://gunc.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<footer style="text-align: center; font-size: 0.9rem; color: #888; margin-top: 3rem;">
+  <p>
+    <a href="/privacy_policy.html">Privacy Policy</a> &nbsp;|&nbsp;
+    &copy; 2025 Galactic Geographic. All Rights Reserved.
+  </p>
+</footer>
+</html>

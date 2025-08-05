@@ -1,0 +1,176 @@
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  color: #e0e0e0;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 20px 0;
+  margin-bottom: 30px;
+}
+header h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.8em;
+  color: #66f0e6;
+  text-shadow: 0px 0px 8px rgba(0, 255, 255, 0.7);
+}
+
+header h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.2em;
+  color: #66f0e6;
+  text-shadow: 0px 0px 8px rgba(0, 255, 255, 0.7);
+}
+
+header p {
+  font-size: 1.1em;
+  margin-top: 10px;
+  color: #b0b0b0;
+}
+
+/* Navigation Menu */
+nav {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+nav a {
+  color: #66f0e6;
+  text-decoration: none;
+  font-size: 1.1em;
+  transition: color 0.3s ease;
+}
+nav a:hover {
+  color: #e080e8;
+}
+
+/* Layout Container (for Index Page) */
+.container {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 20px;
+  /* Use a dark, translucent background to match the article pages */
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Main Content Section */
+.main-content {
+  background: rgba(102,240,230,0.05);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.article {
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(102,240,230,0.2);
+}
+.article h2 {
+  font-family: 'Orbitron', sans-serif;
+  color: #66f0e6;
+  margin-bottom: 10px;
+}
+.article p {
+  margin-bottom: 10px;
+}
+.article img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+.article a {
+  color: #66f0e6;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/* Sidebar Section */
+.sidebar {
+  background: rgba(102,240,230,0.05);
+  padding: 20px;
+  border-radius: 8px;
+  overflow-y: auto;
+}
+.sidebar h3 {
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  color: #66f0e6;
+  margin-bottom: 15px;
+}
+
+.sidebar a {
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  font-size: 1em;
+  color: #66f0e6;
+  margin-bottom: 15px;
+}
+
+.sidebar img {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Video Embed */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  overflow: hidden;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 10px rgba(102,240,230,0.7);
+}
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 30px;
+  border-top: 1px solid rgba(102,240,230,0.1);
+  font-size: 0.9em;
+  color: #aaa;
+}
+
+blockquote {
+	margin-left: 15px;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+  nav {
+    flex-direction: column;
+  }
+}
