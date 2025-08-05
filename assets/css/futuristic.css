@@ -41,13 +41,13 @@ header {
 
 header h1 {
   font-size: 2.8em;
-  color: #66f0e6;
+  color: #66f066;
   text-shadow: 0 0 6px rgba(102, 240, 230, 0.5);
 }
 
 header h2 {
   font-size: 2.2em;
-  color: #66f0e6;
+  color: #66f066;
   text-shadow: 0 0 6px rgba(102, 240, 230, 0.5);
 }
 
@@ -68,7 +68,7 @@ nav {
 }
 
 nav a {
-  color: #66f0e6;
+  color: #66f066;
   text-decoration: none;
   font-size: 1.1em;
   transition: color 0.3s ease;
@@ -111,20 +111,20 @@ nav a:hover {
   left: 1rem;
   background: #090a0f;
   padding: 0 0.5rem;
-  color: #66f0e6;
+  color: #66f066;
   font-size: 0.9rem;
   text-transform: uppercase;
 }
 
 .article h2 {
-  color: #66f0e6;
+  color: #66f066;
   margin-bottom: 10px;
   font-size: 1.8em;
   text-shadow: 0 0 4px rgba(102, 240, 230, 0.4);
 }
 
 .article h2 a {
-  color: #66f0e6;
+  color: #66f066;
   text-decoration: none;
   transition: color 0.3s;
 }
@@ -151,7 +151,7 @@ nav a:hover {
 }
 
 .article a { /* Ensure read more links are teal */
-  color: #66f0e6;
+  color: #66f066;
   text-decoration: underline;
   font-weight: bold;
   transition: color 0.3s;
@@ -171,12 +171,12 @@ nav a:hover {
 .sidebar h3 {
   text-transform: uppercase;
   font-size: 1.5em;
-  color: #66f0e6;
+  color: #66f066;
   margin-bottom: 15px;
 }
 
 .sidebar a {
-  color: #66f0e6;
+  color: #66f066;
   text-decoration: none;
   display: block;
   margin-bottom: 10px;
@@ -222,7 +222,7 @@ footer {
 }
 
 footer a { /* Ensure privacy policy link is teal */
-  color: #66f0e6;
+  color: #66f066;
   text-decoration: none;
   transition: color 0.3s;
 }
