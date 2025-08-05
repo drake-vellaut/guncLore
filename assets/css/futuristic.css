@@ -14,10 +14,9 @@ body {
   line-height: 1.6;
   padding: 20px;
   font-size: 1rem;
-  text-shadow: 0 0 2px rgba(102, 240, 230, 0.3); /* Subtler teal glow to reduce blurriness */
+  text-shadow: 0 0 1px rgba(102, 240, 102, 0.2); /* Subtle green glow */
 }
 
-/* Remove flicker animation to improve readability and reduce blur */
 body::after {
   content: "";
   position: fixed;
@@ -25,30 +24,30 @@ body::after {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.15) 50%) repeat;
-  background-size: 100% 3px; /* Subtler scanlines */
+  background: linear-gradient(to bottom, rgba(102, 240, 102, 0) 50%, rgba(102, 240, 102, 0.15) 50%) repeat; /* Green scanlines */
+  background-size: 100% 3px;
   pointer-events: none;
   z-index: 10;
-  opacity: 0.5; /* Less intense */
+  opacity: 0.5;
 }
 
 header {
   text-align: center;
   padding: 20px 0;
   margin-bottom: 30px;
-  border-bottom: 2px solid rgba(102, 240, 230, 0.3);
+  border-bottom: 2px solid rgba(102, 240, 102, 0.3);
 }
 
 header h1 {
   font-size: 2.8em;
   color: #66f066;
-  text-shadow: 0 0 6px rgba(102, 240, 230, 0.5);
+  text-shadow: 0 0 5px rgba(102, 240, 102, 0.5);
 }
 
 header h2 {
   font-size: 2.2em;
   color: #66f066;
-  text-shadow: 0 0 6px rgba(102, 240, 230, 0.5);
+  text-shadow: 0 0 5px rgba(102, 240, 102, 0.5);
 }
 
 header p {
@@ -86,21 +85,21 @@ nav a:hover {
   background: rgba(0, 0, 0, 0.8);
   padding: 20px;
   border-radius: 8px;
-  border: 1px solid transparent; /* Holographic border */
-  border-image: linear-gradient(to right, rgba(102, 240, 230, 0.1), rgba(102, 240, 230, 0.5), rgba(102, 240, 230, 0.1)) 1;
-  box-shadow: 0 0 12px rgba(102, 240, 230, 0.3), inset 0 0 8px rgba(102, 240, 230, 0.2); /* Holographic glow */
+  border: 2px solid transparent;
+  border-image: linear-gradient(to right, rgba(102, 240, 102, 0.1), rgba(102, 240, 102, 0.6), rgba(102, 240, 102, 0.1)) 1;
+  box-shadow: 0 0 15px rgba(102, 240, 102, 0.4), inset 0 0 10px rgba(102, 240, 102, 0.3); /* Holographic glow */
 }
 
 .main-content {
   padding: 20px;
   border-radius: 8px;
-  background: rgba(102, 240, 230, 0.05);
+  background: rgba(102, 240, 102, 0.05);
 }
 
 .article {
   margin-bottom: 40px;
   padding-bottom: 20px;
-  border-bottom: 1px solid rgba(102, 240, 230, 0.2);
+  border-bottom: 1px solid rgba(102, 240, 102, 0.2);
   position: relative;
 }
 
@@ -120,7 +119,7 @@ nav a:hover {
   color: #66f066;
   margin-bottom: 10px;
   font-size: 1.8em;
-  text-shadow: 0 0 4px rgba(102, 240, 230, 0.4);
+  text-shadow: 0 0 3px rgba(102, 240, 102, 0.4);
 }
 
 .article h2 a {
@@ -136,8 +135,8 @@ nav a:hover {
 
 .article p {
   margin-bottom: 10px;
-  font-size: 1em; /* Reduced size for preview text to not overshadow title */
-  opacity: 0.9; /* Slightly dimmer to emphasize title */
+  font-size: 0.95em;
+  opacity: 0.85;
 }
 
 .article img {
@@ -146,11 +145,11 @@ nav a:hover {
   object-fit: cover;
   border-radius: 4px;
   margin-bottom: 15px;
-  border: 1px solid rgba(102, 240, 230, 0.3);
-  box-shadow: 0 0 8px rgba(102, 240, 230, 0.4);
+  border: 1px solid rgba(102, 240, 102, 0.3);
+  box-shadow: 0 0 8px rgba(102, 240, 102, 0.4);
 }
 
-.article a { /* Ensure read more links are teal */
+.article a {
   color: #66f066;
   text-decoration: underline;
   font-weight: bold;
@@ -162,7 +161,7 @@ nav a:hover {
 }
 
 .sidebar {
-  background: rgba(102, 240, 230, 0.05);
+  background: rgba(102, 240, 102, 0.05);
   padding: 20px;
   border-radius: 8px;
   overflow-y: auto;
@@ -190,7 +189,7 @@ nav a:hover {
 .sidebar img {
   width: 100%;
   border-radius: 4px;
-  border: 1px solid rgba(102, 240, 230, 0.3);
+  border: 1px solid rgba(102, 240, 102, 0.3);
 }
 
 .video-container {
@@ -200,7 +199,7 @@ nav a:hover {
   overflow: hidden;
   border-radius: 4px;
   margin-bottom: 20px;
-  box-shadow: 0 0 10px rgba(102, 240, 230, 0.7);
+  box-shadow: 0 0 10px rgba(102, 240, 102, 0.7);
 }
 
 .video-container iframe {
@@ -216,12 +215,12 @@ footer {
   text-align: center;
   padding: 20px 0;
   margin-top: 30px;
-  border-top: 1px solid rgba(102, 240, 230, 0.1);
+  border-top: 1px solid rgba(102, 240, 102, 0.1);
   font-size: 0.9em;
   color: #b0b0b0;
 }
 
-footer a { /* Ensure privacy policy link is teal */
+footer a {
   color: #66f066;
   text-decoration: none;
   transition: color 0.3s;
