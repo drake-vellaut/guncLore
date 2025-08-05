@@ -32,7 +32,7 @@
   <!-- Google Fonts for the futuristic look -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-  
+
   <style>
 /* articles.css - Updated styles for the articles page of the Stars Reach guild Jekyll site */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap');
@@ -50,10 +50,9 @@ body {
   padding: 20px;
   line-height: 1.6;
   font-size: 1rem;
-  text-shadow: 0 0 2px rgba(102, 240, 230, 0.3); /* Subtler glow */
+  text-shadow: 0 0 1px rgba(102, 240, 102, 0.2);
 }
 
-/* Remove flicker, subtler scanlines */
 body::after {
   content: "";
   position: fixed;
@@ -61,7 +60,7 @@ body::after {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.15) 50%) repeat;
+  background: linear-gradient(to bottom, rgba(102, 240, 102, 0) 50%, rgba(102, 240, 102, 0.15) 50%) repeat; /* Green scanlines */
   background-size: 100% 3px;
   pointer-events: none;
   z-index: 10;
@@ -88,13 +87,13 @@ header {
 header h1 {
   font-size: 2.8em;
   color: #66f066;
-  text-shadow: 0 0 6px rgba(102, 240, 230, 0.5);
+  text-shadow: 0 0 5px rgba(102, 240, 102, 0.5);
 }
 
 header h2 {
   font-size: 2.2em;
   color: #66f066;
-  text-shadow: 0 0 6px rgba(102, 240, 230, 0.5);
+  text-shadow: 0 0 5px rgba(102, 240, 102, 0.5);
 }
 
 header p {
@@ -129,9 +128,9 @@ nav a:hover {
   border-radius: 8px;
   padding: 20px;
   position: relative;
-  border: 1px solid transparent;
-  border-image: linear-gradient(to right, rgba(102, 240, 230, 0.1), rgba(102, 240, 230, 0.5), rgba(102, 240, 230, 0.1)) 1;
-  box-shadow: 0 0 12px rgba(102, 240, 230, 0.3), inset 0 0 8px rgba(102, 240, 230, 0.2); /* Holographic terminal border */
+  border: 2px solid transparent;
+  border-image: linear-gradient(to right, rgba(102, 240, 102, 0.1), rgba(102, 240, 102, 0.6), rgba(102, 240, 102, 0.1)) 1;
+  box-shadow: 0 0 15px rgba(102, 240, 102, 0.4), inset 0 0 10px rgba(102, 240, 102, 0.3);
 }
 
 .article-container::before {
@@ -156,7 +155,7 @@ nav a:hover {
 
 .haiku-row blockquote {
   flex: 0 1 calc(50% - 20px);
-  background: rgba(102, 240, 230, 0.05);
+  background: rgba(102, 240, 102, 0.05);
   border-left: 4px solid #66f066;
   padding: 15px 20px;
   font-style: italic;
@@ -177,13 +176,13 @@ nav a:hover {
   margin-top: 0.8em;
   font-weight: bold;
   font-style: normal;
-  color: #88ddee;
+  color: #88dd88;
   font-size: 0.95em;
 }
 
 .article-header {
   text-align: center;
-  border-bottom: 2px solid rgba(102, 240, 230, 0.2);
+  border-bottom: 2px solid rgba(102, 240, 102, 0.2);
   padding-bottom: 10px;
   margin-bottom: 20px;
 }
@@ -191,7 +190,7 @@ nav a:hover {
 .article-header h1 {
   font-size: 2.8em;
   color: #66f066;
-  text-shadow: 0 0 6px rgba(102, 240, 230, 0.5);
+  text-shadow: 0 0 5px rgba(102, 240, 102, 0.5);
 }
 
 .subheader {
@@ -255,14 +254,14 @@ nav a:hover {
 .photo-grid-4 img {
   width: 100%;
   border-radius: 4px;
-  border: 1px solid rgba(102, 240, 230, 0.3);
-  box-shadow: 0 0 8px rgba(102, 240, 230, 0.4);
+  border: 1px solid rgba(102, 240, 102, 0.3);
+  box-shadow: 0 0 8px rgba(102, 240, 102, 0.4);
 }
 
 .article-content section {
   margin-bottom: 40px;
   padding-bottom: 20px;
-  border-bottom: 1px solid rgba(102, 240, 230, 0.1);
+  border-bottom: 1px solid rgba(102, 240, 102, 0.1);
 }
 
 .article-content section h2,
@@ -270,12 +269,12 @@ nav a:hover {
 .article-content section h4 {
   margin-bottom: 15px;
   color: #66f066;
-  text-shadow: 0 0 4px rgba(102, 240, 230, 0.4);
+  text-shadow: 0 0 3px rgba(102, 240, 102, 0.4);
 }
 
 .article-content section p {
   margin-bottom: 15px;
-  font-size: 1em; /* Adjusted for consistency */
+  font-size: 1em;
 }
 
 .article-content section img {
@@ -283,8 +282,8 @@ nav a:hover {
   display: block;
   margin: 20px 0;
   border-radius: 4px;
-  border: 1px solid rgba(102, 240, 230, 0.3);
-  box-shadow: 0 0 8px rgba(102, 240, 230, 0.4);
+  border: 1px solid rgba(102, 240, 102, 0.3);
+  box-shadow: 0 0 8px rgba(102, 240, 102, 0.4);
 }
 
 .video-container {
@@ -293,9 +292,9 @@ nav a:hover {
   height: 0;
   overflow: hidden;
   margin: 20px 0;
-  border: 1px solid rgba(102, 240, 230, 0.3);
+  border: 1px solid rgba(102, 240, 102, 0.3);
   border-radius: 4px;
-  box-shadow: 0 0 10px rgba(102, 240, 230, 0.7);
+  box-shadow: 0 0 10px rgba(102, 240, 102, 0.7);
 }
 
 .video-container iframe {
@@ -310,13 +309,13 @@ nav a:hover {
 footer {
   text-align: center;
   padding: 20px 0;
-  border-top: 1px solid rgba(102, 240, 230, 0.1);
+  border-top: 1px solid rgba(102, 240, 102, 0.1);
   color: #b0b0b0;
   font-size: 0.9em;
   margin-top: 20px;
 }
 
-footer a { /* Ensure privacy policy is teal */
+footer a {
   color: #66f066;
   transition: color 0.3s;
 }
@@ -380,7 +379,7 @@ code, pre {
   display: block;
   margin: 1rem 0;
   white-space: pre-wrap;
-  box-shadow: inset 0 0 5px rgba(102, 240, 230, 0.2);
+  box-shadow: inset 0 0 5px rgba(102, 240, 102, 0.2);
   font-size: 1em;
 }
 
@@ -422,13 +421,13 @@ code, pre {
     height: auto;
     display: block;
     border-radius: 4px;
-    border: 1px solid rgba(102, 240, 230, 0.2);
+    border: 1px solid rgba(102, 240, 102, 0.2);
   }
   .toc {
     position: relative;
     background: rgba(0, 0, 0, 0.85);
     margin-bottom: 20px;
-    border: 1px solid rgba(102, 240, 230, 0.15);
+    border: 1px solid rgba(102, 240, 102, 0.15);
     border-radius: 6px;
     width: 100%;
     max-width: 100%;
@@ -445,7 +444,7 @@ code, pre {
   }
   .toc ul ul {
     margin-left: 10px;
-    border-left: 1px solid rgba(102, 240, 230, 0.2);
+    border-left: 1px solid rgba(102, 240, 102, 0.2);
     padding-left: 10px;
   }
   .article-content section h2,
