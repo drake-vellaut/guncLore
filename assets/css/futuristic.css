@@ -1,4 +1,6 @@
-/* Reset & Base Styles */
+/* index.css - Styles for the home/index page of the Stars Reach guild Jekyll site */
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Orbitron:wght@400;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -6,31 +8,54 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'VT323', monospace;
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   color: #e0e0e0;
   line-height: 1.6;
   padding: 20px;
+  font-size: 1.2rem;
+  text-shadow: 0 0 4px rgba(102, 240, 230, 0.5); /* Teal glow */
+  animation: flicker 0.2s infinite;
 }
 
-/* Header */
+@keyframes flicker {
+  0% { opacity: 0.98; }
+  50% { opacity: 1; }
+  100% { opacity: 0.98; }
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.2) 50%) repeat;
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 10;
+}
+
 header {
   text-align: center;
   padding: 20px 0;
   margin-bottom: 30px;
+  border-bottom: 2px solid rgba(102, 240, 230, 0.3);
 }
+
 header h1 {
   font-family: 'Orbitron', sans-serif;
   font-size: 2.8em;
   color: #66f0e6;
-  text-shadow: 0px 0px 8px rgba(0, 255, 255, 0.7);
+  text-shadow: 0 0 8px rgba(102, 240, 230, 0.7);
 }
 
 header h2 {
   font-family: 'Orbitron', sans-serif;
   font-size: 2.2em;
   color: #66f0e6;
-  text-shadow: 0px 0px 8px rgba(0, 255, 255, 0.7);
+  text-shadow: 0 0 8px rgba(102, 240, 230, 0.7);
 }
 
 header p {
@@ -39,9 +64,8 @@ header p {
   color: #b0b0b0;
 }
 
-/* Navigation Menu */
 nav {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   padding: 10px;
   display: flex;
   justify-content: center;
@@ -49,67 +73,96 @@ nav {
   margin-bottom: 30px;
   flex-wrap: wrap;
 }
+
 nav a {
   color: #66f0e6;
   text-decoration: none;
+  font-family: 'Orbitron', sans-serif;
   font-size: 1.1em;
   transition: color 0.3s ease;
 }
+
 nav a:hover {
   color: #e080e8;
+  text-shadow: 0 0 5px rgba(224, 128, 232, 0.6);
 }
 
-/* Layout Container (for Index Page) */
 .container {
   display: grid;
   grid-template-columns: 3fr 1fr;
   gap: 20px;
-  /* Use a dark, translucent background to match the article pages */
   background: rgba(0, 0, 0, 0.8);
   padding: 20px;
+  border: 1px solid rgba(102, 240, 230, 0.3);
   border-radius: 8px;
+  box-shadow: 0 0 10px rgba(102, 240, 230, 0.4);
 }
 
-/* Main Content Section */
 .main-content {
-  background: rgba(102,240,230,0.05);
   padding: 20px;
   border-radius: 8px;
+  background: rgba(102, 240, 230, 0.05);
 }
 
 .article {
   margin-bottom: 40px;
   padding-bottom: 20px;
-  border-bottom: 1px solid rgba(102,240,230,0.2);
+  border-bottom: 1px solid rgba(102, 240, 230, 0.2);
+  position: relative;
 }
+
+.article::before {
+  content: "[LOG ENTRY]";
+  position: absolute;
+  top: -0.8rem;
+  left: 1rem;
+  background: #090a0f;
+  padding: 0 0.5rem;
+  color: #66f0e6;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
 .article h2 {
   font-family: 'Orbitron', sans-serif;
   color: #66f0e6;
   margin-bottom: 10px;
+  font-size: 1.8em;
 }
+
+.article h2 a {
+  color: #66f0e6;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.article h2 a:hover {
+  color: #e080e8;
+  text-shadow: 0 0 5px rgba(224, 128, 232, 0.6);
+}
+
 .article p {
   margin-bottom: 10px;
+  font-size: 1.1em;
 }
+
 .article img {
   width: 100%;
   max-height: 300px;
   object-fit: cover;
   border-radius: 4px;
   margin-bottom: 15px;
-}
-.article a {
-  color: #66f0e6;
-  text-decoration: underline;
-  font-weight: bold;
+  border: 1px solid rgba(102, 240, 230, 0.3);
+  box-shadow: 0 0 8px rgba(102, 240, 230, 0.4);
 }
 
-/* Sidebar Section */
 .sidebar {
-  background: rgba(102,240,230,0.05);
+  background: rgba(102, 240, 230, 0.05);
   padding: 20px;
   border-radius: 8px;
   overflow-y: auto;
 }
+
 .sidebar h3 {
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
@@ -120,27 +173,33 @@ nav a:hover {
 
 .sidebar a {
   font-family: 'Orbitron', sans-serif;
-  text-transform: uppercase;
-  font-size: 1em;
   color: #66f0e6;
-  margin-bottom: 15px;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 10px;
+  transition: color 0.3s;
+}
+
+.sidebar a:hover {
+  color: #e080e8;
 }
 
 .sidebar img {
   width: 100%;
-  justify-content: center;
+  border-radius: 4px;
+  border: 1px solid rgba(102, 240, 230, 0.3);
 }
 
-/* Video Embed */
 .video-container {
   position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
+  padding-bottom: 56.25%;
   height: 0;
   overflow: hidden;
   border-radius: 4px;
   margin-bottom: 20px;
-  box-shadow: 0px 0px 10px rgba(102,240,230,0.7);
+  box-shadow: 0 0 10px rgba(102, 240, 230, 0.7);
 }
+
 .video-container iframe {
   position: absolute;
   top: 0;
@@ -150,27 +209,23 @@ nav a:hover {
   border: 0;
 }
 
-/* Footer */
 footer {
   text-align: center;
   padding: 20px 0;
   margin-top: 30px;
-  border-top: 1px solid rgba(102,240,230,0.1);
+  border-top: 1px solid rgba(102, 240, 230, 0.1);
   font-size: 0.9em;
-  color: #aaa;
+  color: #b0b0b0;
 }
 
-blockquote {
-	margin-left: 15px;
-}
-
-
-/* Responsive Adjustments */
 @media (max-width: 768px) {
   .container {
     grid-template-columns: 1fr;
   }
   nav {
     flex-direction: column;
+  }
+  body {
+    font-size: 1.1rem;
   }
 }
