@@ -1,0 +1,105 @@
+/* index.css - Styles for the home/index page of the Jekyll site */
+/* Import retro font */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+/* Global styles for sci-fi terminal feel */
+body {
+  background-color: black;
+  background-image: radial-gradient(rgba(0, 255, 0, 0.4), black 120%);
+  color: #00ff00; /* Green terminal text */
+  font-family: 'VT323', monospace;
+  font-size: 1.2rem;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5); /* Glow effect */
+  margin: 0;
+  padding: 2rem;
+  height: 100vh;
+  overflow: auto;
+  animation: flicker 0.15s infinite; /* Subtle flicker */
+}
+
+/* Flicker animation */
+@keyframes flicker {
+  0% { opacity: 0.99; }
+  50% { opacity: 1; }
+  100% { opacity: 0.99; }
+}
+
+/* Scanlines overlay */
+body::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(18, 16, 16, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.25) 50%) repeat;
+  background-size: 100% 4px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Header for site title */
+header {
+  text-align: center;
+  border-bottom: 2px solid #00ff00;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+
+/* Post list styled as log entries */
+.post-list {
+  list-style: none;
+  padding: 0;
+}
+
+.post-list li {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid #00ff00;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+  position: relative;
+}
+
+.post-list li::before {
+  content: "[LOG ENTRY]";
+  position: absolute;
+  top: -0.8rem;
+  left: 1rem;
+  background: black;
+  padding: 0 0.5rem;
+  color: #00ff00;
+  font-size: 0.8rem;
+}
+
+.post-list h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+}
+
+.post-list h2 a {
+  color: #00ff00;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.post-list h2 a:hover {
+  color: #ffffff;
+  text-shadow: 0 0 8px #00ff00;
+}
+
+.post-list p {
+  margin: 0;
+  opacity: 0.8;
+}
+
+/* Footer or additional elements */
+footer {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
