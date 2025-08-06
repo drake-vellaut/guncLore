@@ -24,15 +24,6 @@ title: "Stars Reach - GUNC Lore"
           {% if post.image %}
             <img src="{{ post.image }}" alt="{{ post.title }}">
           {% endif %}
-          <div class="post-tags">
-            {% if post.tags.size == 0 %}
-              <span class="tag no-tags">Untagged</span>
-            {% else %}
-              {% for tag in post.tags %}
-                <span class="tag">{{ tag }}</span>
-              {% endfor %}
-            {% endif %}
-          </div>
           <p>{{ post.excerpt }}</p>
           <a href="{{ post.url | relative_url }}">Read more...</a>
         </div>
