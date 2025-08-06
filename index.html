@@ -16,16 +16,6 @@ title: "Stars Reach - GUNC Lore"
 <div class="container">
   <!-- Main Content Listing the Posts -->
   <div class="main-content">
-    {% assign all_tags = site.tags %}
-{% for tag in all_tags %}
-  <h2>{{ tag[0] }}</h2> <!-- tag name -->
-  {% for post in tag[1] %}
-    <div class="article">
-      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-      <p>{{ post.excerpt }}</p>
-    </div>
-  {% endfor %}
-{% endfor %}
     {% if site.posts.size == 0 %}
       <p>No posts available.</p>
     {% else %}
@@ -86,23 +76,3 @@ title: "Stars Reach - GUNC Lore"
     &copy; 2025 GUNC. All Rights Reserved.
   </p>
 </footer>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const tagButtons = document.querySelectorAll('.tag-button');
-    const articles = document.querySelectorAll('.article');
-
-    tagButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        tagButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-
-        const selectedTag = button.getAttribute('data-tag');
-        articles.forEach(article => {
-          const tags = (article.getAttribute('data-tags') || '').trim().split(/\s+/);
-          article.style.display = (selectedTag === 'all' || tags.includes(selectedTag)) ? 'block' : 'none';
-        });
-      });
-    });
-  });
-</script>
