@@ -32,6 +32,8 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-paginate-v2
+  - jekyll-json
+  - jekyll-tagging
 
 header_pages:
   - index.html
@@ -44,6 +46,9 @@ paginate: 5
 paginate_path: "/page:num"
 
 show_tags: true
+
+include:
+  - search.json
 
 # Exclude from processing.
 # The following items will not be processed, by default.
