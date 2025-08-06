@@ -14,22 +14,19 @@ title: "Stars Reach - GUNC Lore"
 
 <!-- Main Container -->
 <div class="container">
-  <!-- Main Content Listing the Posts -->
-  <div class="main-content">
-    {% if site.posts.size == 0 %}
-      <p>No posts available.</p>
-    {% else %}
-      {% for post in paginator.posts %}
-          <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-          {% if post.image %}
-            <img src="{{ post.image }}" alt="{{ post.title }}">
-          {% endif %}
-          <p>{{ post.excerpt }}</p>
-          <a href="{{ post.url | relative_url }}">Read more...</a>
-        </div>
+    <!-- Main Content Listing the Posts -->
+    <div class="main-content">
+      {% for post in site.posts %}
+      <div class="article">
+        <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+        {% if post.image %}
+          <img src="{{ post.image }}" alt="{{ post.title }}">
+        {% endif %}
+        <p>{{ post.excerpt }}</p>
+        <a href="{{ post.url | relative_url }}">Read more...</a>
+      </div>
       {% endfor %}
-    {% endif %}
-  </div>
+    </div>
   <!-- Sidebar with Featured Video and Photo Gallery -->
   <aside class="sidebar">
     <h3>Featured Video</h3>
@@ -43,23 +40,26 @@ title: "Stars Reach - GUNC Lore"
 </div>
 <!-- Pagination Controls -->
 <div class="pagination">
-  {% if paginator.previous_page %}
-    <a class="previous" href="{{ paginator.previous_page_path | relative_url }}">&laquo; Previous</a>
-  {% else %}
-    <span class="disabled">&laquo; Previous</span>
-  {% endif %}
-  {% for page in (1..paginator.total_pages) %}
-    {% if page == paginator.page %}
-      <span class="current">{{ page }}</span>
+    {% if paginator.previous_page %}
+      <a class="previous" href="{{ paginator.previous_page_path | relative_url }}">&laquo; Previous</a>
     {% else %}
-      <a href="{{ paginator.paginate_path | relative_url | replace:'PAGE', page }}">{{ page }}</a>
+      <span class="disabled">&laquo; Previous</span>
+    {% endif %}
+
+    {% for page in (1..paginator.total_pages) %}
+      {% if page == paginator.page %}
+        <span class="current">{{ page }}</span>
+      {% else %}
+        <a href="{{ paginator.paginate_path | relative_url | replace:'PAGE', page }}">{{ page }}</a>
+      {% endif %}
     {% endfor %}
-  {% if paginator.next_page %}
-    <a class="next" href="{{ paginator.next_page_path | relative_url }}">Next &raquo;</a>
-  {% else %}
-    <span class="disabled">Next &raquo;</span>
-  {% endif %}
-</div>
+
+    {% if paginator.next_page %}
+      <a class="next" href="{{ paginator.next_page_path | relative_url }}">Next &raquo;</a>
+    {% else %}
+      <span class="disabled">Next &raquo;</span>
+    {% endif %}
+  </div>
 <footer style="text-align: center; font-size: 0.9rem; color: #888; margin-top: 3rem;">
   <p>
     <a href="/privacy_policy.html">Privacy Policy</a> &nbsp;|&nbsp;
