@@ -14,7 +14,7 @@ body {
   line-height: 1.6;
   padding: 20px;
   font-size: 1rem;
-  text-shadow: 0 0 1px rgba(102, 240, 102, 0.2); /* Subtle green glow */
+  text-shadow: 0 0 1px rgba(102, 240, 102, 0.2);
 }
 
 body::after {
@@ -24,7 +24,7 @@ body::after {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to bottom, rgba(102, 240, 102, 0) 50%, rgba(102, 240, 102, 0.15) 50%) repeat; /* Green scanlines */
+  background: linear-gradient(to bottom, rgba(102, 240, 102, 0) 50%, rgba(102, 240, 102, 0.15) 50%) repeat;
   background-size: 100% 3px;
   pointer-events: none;
   z-index: 10;
@@ -78,6 +78,59 @@ nav a:hover {
   text-shadow: 0 0 5px rgba(224, 128, 232, 0.6);
 }
 
+.tag-filter {
+  max-width: 1100px;
+  margin: 0 auto 20px;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 6px;
+  border: 1px solid transparent;
+  border-image: linear-gradient(to right, rgba(102, 240, 102, 0.1), rgba(102, 240, 102, 0.5), rgba(102, 240, 102, 0.1)) 1;
+  box-shadow: 0 0 10px rgba(102, 240, 102, 0.3);
+}
+
+.tag-filter h3 {
+  font-size: 1.2em;
+  color: #66f066;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag-button {
+  background: rgba(102, 240, 102, 0.15);
+  border: 1px solid #66f066;
+  color: #66f066;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.9em;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.tag-button:hover {
+  background: rgba(102, 240, 102, 0.3);
+  color: #e0e0e0;
+  box-shadow: 0 0 5px rgba(102, 240, 102, 0.5);
+}
+
+.tag-button.active {
+  background: #66f066;
+  color: #090a0f;
+  box-shadow: 0 0 8px rgba(102, 240, 102, 0.7);
+}
+
+.no-tags {
+  color: #b0b0b0;
+  font-size: 0.9em;
+}
+
 .container {
   display: grid;
   grid-template-columns: 3fr 1fr;
@@ -87,7 +140,7 @@ nav a:hover {
   border-radius: 8px;
   border: 2px solid transparent;
   border-image: linear-gradient(to right, rgba(102, 240, 102, 0.1), rgba(102, 240, 102, 0.6), rgba(102, 240, 102, 0.1)) 1;
-  box-shadow: 0 0 15px rgba(102, 240, 102, 0.4), inset 0 0 10px rgba(102, 240, 102, 0.3); /* Holographic glow */
+  box-shadow: 0 0 15px rgba(102, 240, 102, 0.4), inset 0 0 10px rgba(102, 240, 102, 0.3);
 }
 
 .main-content {
@@ -131,6 +184,27 @@ nav a:hover {
 .article h2 a:hover {
   color: #e080e8;
   text-shadow: 0 0 5px rgba(224, 128, 232, 0.6);
+}
+
+.post-tags {
+  margin-bottom: 10px;
+}
+
+.tag {
+  display: inline-block;
+  background: rgba(102, 240, 102, 0.1);
+  border: 1px solid #66f066;
+  color: #66f066;
+  font-size: 0.85em;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.tag.no-tags {
+  color: #b0b0b0;
+  border-color: #b0b0b0;
 }
 
 .article p {
@@ -211,6 +285,37 @@ nav a:hover {
   border: 0;
 }
 
+.pagination {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.pagination a, .pagination span {
+  display: inline-block;
+  padding: 8px 12px;
+  margin: 0 5px;
+  color: #66f066;
+  text-decoration: none;
+  border: 1px solid rgba(102, 240, 102, 0.3);
+  border-radius: 4px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.pagination a:hover {
+  background: rgba(102, 240, 102, 0.2);
+  color: #e0e0e0;
+}
+
+.pagination .current {
+  background: #66f066;
+  color: #090a0f;
+}
+
+.pagination .disabled {
+  color: #b0b0b0;
+  border-color: rgba(102, 240, 102, 0.1);
+}
+
 footer {
   text-align: center;
   padding: 20px 0;
@@ -239,5 +344,8 @@ footer a:hover {
   }
   body {
     font-size: 0.95rem;
+  }
+  .tag-list {
+    justify-content: center;
   }
 }
