@@ -31,6 +31,7 @@ twitter_username: GUNC_StarsReach
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-paginate-v2
 
 header_pages:
   - index.html
@@ -41,6 +42,8 @@ page_paths:
 
 paginate: 5
 paginate_path: "/page:num"
+
+show_tags: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.
