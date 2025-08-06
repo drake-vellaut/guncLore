@@ -4,14 +4,22 @@ module Jekyll
     safe true
 
     def generate(site)
-      site.tags.each do |tag, posts|
-        site.pages << TagPage.new(site, site.source, tag)
+      begin
+        site.tags.each do |tag, posts|
+          site.pages << TagPage.new(site, site.source, tag, posts)
+        end
+
+        # Plugin ran successfully
+        File.write(File.join(site.dest, "plugin-ran.txt"), "Tag plugin executed successfully.")
+      rescue => e
+        # Log plugin error
+        File.write(File.join(site.dest, "plugin-error.txt"), "Plugin error: #{e.message}")
       end
     end
   end
 
   class TagPage < Page
-    def initialize(site, base, tag)
+    def initialize(site, base, tag, posts)
       @site = site
       @base = base
       @dir  = "tag/#{Jekyll::Utils.slugify(tag)}"
@@ -21,13 +29,7 @@ module Jekyll
       self.read_yaml(File.join(base, '_layouts'), 'tag_page.html')
       self.data['tag'] = tag
       self.data['title'] = "Posts tagged with #{tag}"
-      self.data['tag_posts'] = site.tags[tag].sort_by { |p| p.date }.reverse
-      begin
-        File.write(File.join(site.dest, "plugin-ran.txt"), "Tag plugin executed successfully.")
-rescue => e
-        File.write(File.join(site.dest, "plugin-error.txt"), "Plugin error: #{e.message}")
-      end
-
+      self.data['tag_posts'] = posts.sort_by { |p| p.date }.reverse
     end
   end
 end
