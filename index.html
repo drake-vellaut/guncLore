@@ -11,21 +11,7 @@ title: "Stars Reach - GUNC Lore"
 <nav>
   <a href="{{ '/' | relative_url }}">GUNC Lore</a>
 </nav>
-<!-- Tag Filter -->
-<div class="tag-filter">
-  <h3>Filter by Tag</h3>
-  <div class="tag-list">
-    <button class="tag-button active" data-tag="all">All</button>
-    {% assign tags = site.tags | sort %}
-    {% if tags.size == 0 %}
-      <span class="no-tags">No tags available</span>
-    {% else %}
-      {% for tag in tags %}
-        <button class="tag-button" data-tag="{{ tag[0] | slugify: 'raw' }}">{{ tag[0] }}</button>
-      {% endfor %}
-    {% endif %}
-  </div>
-</div>
+
 <!-- Main Container -->
 <div class="container">
   <!-- Main Content Listing the Posts -->
@@ -101,7 +87,7 @@ title: "Stars Reach - GUNC Lore"
   </p>
 </footer>
 
-<!--script>
+<script>
   document.addEventListener('DOMContentLoaded', () => {
     const tagButtons = document.querySelectorAll('.tag-button');
     const articles = document.querySelectorAll('.article');
@@ -119,4 +105,4 @@ title: "Stars Reach - GUNC Lore"
       });
     });
   });
-</script-->
+</script>
