@@ -14,7 +14,7 @@ module Jekyll
     def initialize(site, base, tag)
       @site = site
       @base = base
-      @dir  = "tag/#{tag}"
+      @dir  = "tag/#{Jekyll::Utils.slugify(tag)}"
       @name = "index.html"
 
       self.process(@name)
@@ -22,6 +22,7 @@ module Jekyll
       self.data['tag'] = tag
       self.data['title'] = "Posts tagged with #{tag}"
       self.data['tag_posts'] = site.tags[tag].sort_by { |p| p.date }.reverse
+      File.write(File.join(site.dest, "plugin-ran.txt"), "Tag plugin executed successfully.")
     end
   end
 end
