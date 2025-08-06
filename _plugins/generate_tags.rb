@@ -21,6 +21,7 @@ module Jekyll
       self.read_yaml(File.join(base, '_layouts'), 'tag_page.html')
       self.data['tag'] = tag
       self.data['title'] = "Posts tagged with #{tag}"
+      self.data['tag_posts'] = site.tags[tag].sort_by { |p| p.date }.reverse
     end
   end
 end

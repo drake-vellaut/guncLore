@@ -60,6 +60,10 @@ pagination:
 
 show_tags: true
 
+tag_page_layout: tag_page
+tag_page_dir: tag
+
+
 include:
   - search.json
 
