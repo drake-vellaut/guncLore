@@ -51,6 +51,9 @@ jobs:
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v3
+      - name: Confirm plugin ran
+        run: test -f _site/plugin-ran.txt && echo "✅ Plugin ran" || (echo "❌ Plugin did not run" && exit 1)
+
 
   # Deployment job
   deploy:
