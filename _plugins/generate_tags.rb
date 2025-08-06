@@ -22,7 +22,12 @@ module Jekyll
       self.data['tag'] = tag
       self.data['title'] = "Posts tagged with #{tag}"
       self.data['tag_posts'] = site.tags[tag].sort_by { |p| p.date }.reverse
-      File.write(File.join(site.dest, "plugin-ran.txt"), "Tag plugin executed successfully.")
+      begin
+        File.write(File.join(site.dest, "plugin-ran.txt"), "Tag plugin executed successfully.")
+rescue => e
+        File.write(File.join(site.dest, "plugin-error.txt"), "Plugin error: #{e.message}")
+      end
+
     end
   end
 end
