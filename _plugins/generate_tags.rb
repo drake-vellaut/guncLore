@@ -8,13 +8,6 @@ module Jekyll
         site.tags.each do |tag, posts|
           site.pages << TagPage.new(site, site.source, tag, posts)
         end
-
-        # Plugin ran successfully
-        File.write(File.join(site.dest, "plugin-ran.txt"), "Tag plugin executed successfully.")
-      rescue => e
-        # Log plugin error
-        File.write(File.join(site.dest, "plugin-error.txt"), "Plugin error: #{e.message}")
-      end
     end
   end
 
