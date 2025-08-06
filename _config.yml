@@ -63,6 +63,8 @@ show_tags: true
 tag_page_layout: tag_page
 tag_page_dir: tag
 
+safe: false
+
 
 include:
   - search.json
