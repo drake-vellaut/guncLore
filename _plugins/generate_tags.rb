@@ -4,10 +4,9 @@ module Jekyll
     safe true
 
     def generate(site)
-      begin
-        site.tags.each do |tag, posts|
-          site.pages << TagPage.new(site, site.source, tag, posts)
-        end
+      site.tags.each do |tag, posts|
+        site.pages << TagPage.new(site, site.source, tag, posts)
+      end
     end
   end
 
