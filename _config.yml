@@ -32,8 +32,6 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-paginate-v2
-  - jekyll-json
-  - jekyll-tagging
 
 header_pages:
   - index.html
@@ -57,11 +55,15 @@ pagination:
     before: 2
     after: 2
 
+autopages:
+  enabled: true
+  tags:
+    layouts:
+      - tag_page  # Your existing layout name (without .html)
+    title: "Posts tagged with :tag"
+    permalink: "/tag/:tag/"
 
 show_tags: true
-
-tag_page_layout: tag_page
-tag_page_dir: tag
 
 safe: false
 
