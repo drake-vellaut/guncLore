@@ -74,6 +74,8 @@ safe: false
 
 include:
   - search.json
+  - search.html
+  - tag.html
 
 # Exclude from processing.
 # The following items will not be processed, by default.
