@@ -1,0 +1,77 @@
+---
+layout: default
+title: Search GUNC Lore
+---
+
+<h1>Search GUNC Lore</h1>
+<p>Enter keywords to search posts by title, content, excerpt, or tags.</p>
+
+<!-- Search Bar -->
+   <form id="search-form" style="margin-bottom: 2rem;">
+     <input type="text" id="search-input" placeholder="Search lore..." style="width: 70%; padding: 0.5rem;">
+     <button type="submit" style="padding: 0.5rem;">Search</button>
+   </form>
+
+   <!-- Default Post List (will be replaced by search results) -->
+   <div id="post-list">
+
+<script src="https://unpkg.com/lunr@2.3.9/lunr.js"></script>
+<script>
+  let index; // Lunr index
+  let documents; // Full docs
+
+  // Load index on page load
+  fetch('/search.json')
+    .then(response => response.json())
+    .then(data => {
+      documents = data;
+      index = lunr(function () {
+        this.ref('url');
+        this.field('title', { boost: 10 });
+        this.field('excerpt');
+        this.field('content');
+        this.field('tags', { boost: 5 });
+
+        data.forEach(doc => this.add(doc));
+      });
+    })
+    .catch(error => console.error('Error loading search index:', error));
+
+  // Handle search
+  document.getElementById('search-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const query = document.getElementById('search-input').value.trim();
+    const postList = document.getElementById('post-list');
+    const pagination = document.querySelector('.pagination');
+
+    if (!query) {
+      location.reload(); // Reset to default paginated view if empty
+      return;
+    }
+
+    if (!index) return;
+
+    const results = index.search(query + '* ~1'); // Wildcard + fuzzy (tolerance 1)
+    postList.innerHTML = ''; // Clear default posts
+
+    if (results.length === 0) {
+      postList.innerHTML = '<p>No results found.</p>';
+    } else {
+      results.forEach(result => {
+        const doc = documents.find(d => d.url === result.ref);
+        const resultHTML = `
+          <div class="article">
+            <h2><a href="${doc.url}">${doc.title}</a></h2>
+            <p>${doc.excerpt}</p>
+            <p>Tags: ${doc.tags.map(tag => `<a href="/tag/${tag.toLowerCase().replace(/\s+/g, '-')}">${tag}</a>`).join(', ')}</p>
+            <a href="${doc.url}">Read more...</a>
+          </div>
+        `;
+        postList.innerHTML += resultHTML;
+      });
+    }
+
+    // Hide pagination for search results
+    pagination.style.display = 'none';
+  });
+</script>

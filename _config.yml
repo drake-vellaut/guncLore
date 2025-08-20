@@ -59,9 +59,13 @@ autopages:
   enabled: true
   tags:
     layouts:
-      - tag_page  # Your existing layout name (without .html)
+      - tag_page  # Your layout (now without .html in filename)
     title: "Posts tagged with :tag"
-    permalink: "/tag/:tag/"
+    permalink: /tag/:tag/
+  categories:
+    enabled: false
+  collections:
+    enabled: false
 
 show_tags: true
 

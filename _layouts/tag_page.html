@@ -8,11 +8,12 @@ pagination:
 
 <!-- Header -->
 <header>
-  <h1>Posts tagged with "{{ page.tag }}"</h1>
-  <p>Explore lore entries related to <strong>{{ page.tag }}</strong>.</p>
+  <h1>Posts tagged with "{{ page.autopages.display_name | capitalize }}"</h1>
+  <p>Explore lore entries related to <strong>{{ page.autopages.display_name | capitalize }}</strong>.</p>
 </header>
 <nav>
     <a href="/">GUNC Lore</a>
+    <a href="/search/">Search</a>
   </nav>
 
 <!-- Main Container -->

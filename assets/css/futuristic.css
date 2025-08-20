@@ -335,6 +335,52 @@ footer a:hover {
   color: #e080e8;
 }
 
+#search-form {
+margin-bottom: 2rem;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 10px;
+background: rgba(0, 0, 0, 0.6);
+padding: 10px;
+border-radius: 8px;
+border: 1px solid rgba(102, 240, 102, 0.3);
+box-shadow: 0 0 10px rgba(102, 240, 102, 0.2);
+}
+#search-input {
+width: 70%;
+padding: 0.5rem;
+background: rgba(9, 10, 15, 0.8);
+color: #e0e0e0;
+border: 1px solid #66f066;
+border-radius: 4px;
+font-family: 'Orbitron', sans-serif;
+font-size: 1rem;
+transition: border-color 0.3s, box-shadow 0.3s;
+}
+#search-input:focus {
+border-color: #e080e8;
+box-shadow: 0 0 5px rgba(224, 128, 232, 0.6);
+outline: none;
+}
+#search-form button {
+padding: 0.5rem 1rem;
+background: rgba(102, 240, 102, 0.2);
+color: #66f066;
+border: 1px solid #66f066;
+border-radius: 4px;
+font-family: 'Orbitron', sans-serif;
+font-size: 1rem;
+cursor: pointer;
+transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+#search-form button:hover {
+background: #66f066;
+color: #090a0f;
+box-shadow: 0 0 8px rgba(102, 240, 102, 0.7);
+}
+
+
 @media (max-width: 768px) {
   .container {
     grid-template-columns: 1fr;
@@ -348,4 +394,11 @@ footer a:hover {
   .tag-list {
     justify-content: center;
   }
+  #search-form {
+flex-direction: column;
+gap: 10px;
+}
+#search-input {
+width: 100%;
+}
 }
