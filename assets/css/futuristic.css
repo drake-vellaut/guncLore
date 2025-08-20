@@ -133,7 +133,7 @@ nav a:hover {
 
 .container {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 2fr 1fr;
   gap: 20px;
   background: rgba(0, 0, 0, 0.8);
   padding: 20px;
